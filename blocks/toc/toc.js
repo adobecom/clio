@@ -9,8 +9,11 @@ export default async function decorate(block) {
     a.href = `#${h.id}`;
     a.innerHTML = h.innerHTML;
     a.addEventListener('click', (ev) => {
+      ev.preventDefault();
       block.querySelectorAll('li').forEach((li) => li.classList.remove('is-active'));
       ev.target.closest('li').classList.add('is-active');
+      console.log(document.querySelector(new URL(a.href).hash));
+      document.querySelector(new URL(a.href).hash).scrollIntoView({ behavior: 'smooth' });
     });
     li.append(a);
     if (h.nodeName === 'H2') {

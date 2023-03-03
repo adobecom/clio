@@ -22,6 +22,10 @@ main {
   padding: 0 2rem;
 }
 
+h1, h2, h3, h4 {
+  scroll-margin: 1rem;
+}
+
 .section {
   grid-area: content;
 }
