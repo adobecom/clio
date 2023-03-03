@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { setLibs } from './utils.js';
+import { buildBlock, setLibs } from './utils.js';
 
 // Add project-wide style path here.
 const STYLES = '';
@@ -31,6 +31,62 @@ const CONFIG = {
     kr: { ietf: 'ko-KR', tk: 'zfo3ouc' },
   },
 };
+
+(function buildTocBlock() {
+  const main = document.querySelector('main');
+  const headings = main.querySelectorAll('h2,h3');
+  const toc = document.createElement('div');
+  let parent = document.createElement('ul');
+  toc.append(parent);
+  headings.forEach((h) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${h.id}`;
+    a.innerHTML = h.innerHTML;
+    li.innerHTML = a.outerHTML;
+    if (h.nodeName === 'H2') {
+      parent = toc.firstElementChild;
+    } else if (h.nodeName === 'H3') {
+      if (parent.parentElement === toc) {
+        const ul = document.createElement('ul');
+        parent.lastElementChild.append(ul);
+        parent = ul;
+      }
+    }
+    parent.append(li);
+  });
+
+  const section = document.createElement('div');
+  section.append(buildBlock('toc', { elems: [toc] }));
+  main.prepend(section);
+}());
+
+(function buildHeroBlock() {
+  const main = document.querySelector('main');
+  const h1 = main.querySelector('h1');
+  if (!h1 || !h1.previousElementSibling) {
+    return;
+  }
+
+  const pictures = [];
+  let sibling = h1.previousElementSibling;
+  while (sibling) {
+    if (sibling.firstElementChild && sibling.firstElementChild.nodeName === 'PICTURE') {
+      pictures.push(sibling.firstElementChild);
+      sibling = sibling.previousElementSibling;
+    } else {
+      sibling = null;
+    }
+  }
+
+  if (!pictures.length) {
+    return;
+  }
+
+  const section = document.createElement('div');
+  section.append(buildBlock('hero', { elems: pictures }));
+  main.prepend(section);
+}());
 
 // Load LCP image immediately
 (async function loadLCPImage() {

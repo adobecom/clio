@@ -6,3 +6,37 @@
  * 
  *
  */
+
+body > header,
+body > footer {
+  display: none;
+}
+
+body > header + main {
+  margin: 0;
+}
+
+.section {
+  grid-area: content;
+}
+
+.section:has(.hero) {
+  grid-area: hero;
+}
+
+.section:has(.toc) {
+  grid-area: toc;
+}
+
+main {
+  display: block;
+}
+
+@media (min-width: 600px) {
+  main {
+    display: grid;
+    grid-template:
+      'hero hero'
+      'toc content' / 1fr 3fr;
+  }
+}
