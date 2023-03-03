@@ -32,7 +32,7 @@ export default async function decorate(block) {
     responsivePicture.prepend(e);
   });
 
-  pictures.forEach((p) => p.remove());
+  pictures.forEach((p) => console.log(p) || p.remove());
 
   block.firstElementChild.firstElementChild.append(responsivePicture);
 }

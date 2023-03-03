@@ -6,10 +6,21 @@ main .hero {
   
 main .hero picture {
   width: 100%;
+  overflow: hidden;
 }
 
 main .hero img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  border-radius: 10px;
+  vertical-align: bottom;
+}
+
+@media (min-width: 600px) {
+
+  main .hero img {
+    height: 300px;
+  }
+  
 }

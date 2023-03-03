@@ -13,7 +13,12 @@ body > footer {
 }
 
 body > header + main {
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  display: block;
 }
 
 .section {
@@ -26,10 +31,6 @@ body > header + main {
 
 .section:has(.toc) {
   grid-area: toc;
-}
-
-main {
-  display: block;
 }
 
 @media (min-width: 600px) {

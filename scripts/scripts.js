@@ -33,32 +33,9 @@ const CONFIG = {
 };
 
 (function buildTocBlock() {
-  const main = document.querySelector('main');
-  const headings = main.querySelectorAll('h2,h3');
-  const toc = document.createElement('div');
-  let parent = document.createElement('ul');
-  toc.append(parent);
-  headings.forEach((h) => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${h.id}`;
-    a.innerHTML = h.innerHTML;
-    li.innerHTML = a.outerHTML;
-    if (h.nodeName === 'H2') {
-      parent = toc.firstElementChild;
-    } else if (h.nodeName === 'H3') {
-      if (parent.parentElement === toc) {
-        const ul = document.createElement('ul');
-        parent.lastElementChild.append(ul);
-        parent = ul;
-      }
-    }
-    parent.append(li);
-  });
-
   const section = document.createElement('div');
-  section.append(buildBlock('toc', { elems: [toc] }));
-  main.prepend(section);
+  section.append(buildBlock('toc', { elems: [] }));
+  document.querySelector('main').prepend(section);
 }());
 
 (function buildHeroBlock() {
@@ -82,6 +59,8 @@ const CONFIG = {
   if (!pictures.length) {
     return;
   }
+
+  pictures.forEach((p) => p.parentElement.remove());
 
   const section = document.createElement('div');
   section.append(buildBlock('hero', { elems: pictures }));

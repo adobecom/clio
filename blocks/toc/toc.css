@@ -1,3 +1,20 @@
+.toc {
+  padding: 1rem;
+}
+
 .toc ul {
   list-style: none;
+}
+
+.toc a:any-link {
+  color: inherit;
+}
+
+.toc li[aria-expanded="false"] > ul {
+  display: none;
+}
+
+.toc.is-sticky {
+  position: fixed;
+  top: 1rem;
 }
