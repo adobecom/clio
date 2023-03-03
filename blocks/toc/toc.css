@@ -3,15 +3,63 @@
 }
 
 .toc ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-.toc a:any-link {
+.toc li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.toc li a {
+  display: block;
+  padding: 1rem 2rem 1rem 3rem;
+}
+
+.toc li a:any-link {
   color: inherit;
+  border-radius: 4px;
+}
+
+.toc li a:hover {
+  background: #eee;
+  text-decoration: none;
 }
 
 .toc li[aria-expanded="false"] > ul {
   display: none;
+}
+
+.toc li[aria-expanded] > button {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  top: 0;
+  padding: 1rem;
+  border: none;
+  background: none;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.toc li[aria-expanded="false"] button::after,
+.toc li[aria-expanded="true"] button::after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  left: 50%;
+  width: .5rem;
+  height: .5rem;
+  border: 0 solid;
+  border-width: 0 2px 2px 0;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.toc li[aria-expanded="true"] button::after {
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .toc.is-sticky {

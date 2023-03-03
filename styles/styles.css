@@ -19,6 +19,7 @@ body > header + main {
 
 main {
   display: block;
+  padding: 0 2rem;
 }
 
 .section {

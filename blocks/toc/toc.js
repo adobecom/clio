@@ -21,10 +21,9 @@ export default async function decorate(block) {
         button.setAttribute('aria-controls', `menu-${id}`);
         button.addEventListener('click', (ev) => {
           const expanded = button.parentElement.getAttribute('aria-expanded') === 'true';
-          block.querySelectorAll('li[aria-expanded]').forEach((li) => li.setAttribute('aria-expanded', false));
           button.parentElement.setAttribute('aria-expanded', !expanded);
         });
-        button.textContent = 'x';
+        button.textContent = '';
         parent.lastElementChild.prepend(button);
         parent.lastElementChild.append(ul);
         parent = ul;
@@ -32,6 +31,7 @@ export default async function decorate(block) {
     }
     parent.append(li);
   });
+  block.querySelectorAll('li[aria-expanded]').forEach((li) => li.setAttribute('aria-expanded', false));
 
   window.addEventListener('scroll', () => {
     const rect = document.querySelector('.content').getBoundingClientRect();
