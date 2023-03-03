@@ -8,7 +8,11 @@ export default async function decorate(block) {
     const a = document.createElement('a');
     a.href = `#${h.id}`;
     a.innerHTML = h.innerHTML;
-    li.innerHTML = a.outerHTML;
+    a.addEventListener('click', (ev) => {
+      block.querySelectorAll('li').forEach((li) => li.classList.remove('is-active'));
+      ev.target.closest('li').classList.add('is-active');
+    });
+    li.append(a);
     if (h.nodeName === 'H2') {
       li.setAttribute('aria-expanded', false);
       parent = block.firstElementChild.firstElementChild.firstElementChild;
@@ -19,7 +23,7 @@ export default async function decorate(block) {
         ul.id = `menu-${id}`;
         const button = document.createElement('button');
         button.setAttribute('aria-controls', `menu-${id}`);
-        button.addEventListener('click', (ev) => {
+        button.addEventListener('click', () => {
           const expanded = button.parentElement.getAttribute('aria-expanded') === 'true';
           button.parentElement.setAttribute('aria-expanded', !expanded);
         });
@@ -35,6 +39,17 @@ export default async function decorate(block) {
 
   window.addEventListener('scroll', () => {
     const rect = document.querySelector('.content').getBoundingClientRect();
+    const isSticky = block.classList.contains('is-sticky');
+    const shouldSticky = rect.top < 0;
+    if (isSticky === shouldSticky) {
+      return;
+    }
+    let width = 'auto';
+    if (shouldSticky) {
+      const styles = window.getComputedStyle(block);
+      width = `${block.clientWidth - parseInt(styles.paddingLeft, 10) - parseInt(styles.paddingRight)}px`;
+    }
+    block.style.width = width;
     block.classList.toggle('is-sticky', rect.top < 0);
   }, { passive: true });
 }

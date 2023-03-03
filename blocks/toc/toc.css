@@ -24,7 +24,8 @@
   border-radius: 4px;
 }
 
-.toc li a:hover {
+.toc li a:hover,
+.toc li.is-active > a {
   background: #eee;
   text-decoration: none;
 }
