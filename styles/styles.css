@@ -6,6 +6,9 @@
  * 
  *
  */
+html body {
+  background-color: var(--color-gray-100);
+}
 
 body > header,
 body > footer {
@@ -13,25 +16,34 @@ body > footer {
 }
 
 body > header + main {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
 }
 
 main {
   display: block;
-  padding: 0 2rem;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-200);
 }
 
-h1, h2, h3, h4 {
+h3, h4 {
   scroll-margin: 1rem;
+}
+
+h2 {
+  margin-top: 3rem;
+  scroll-margin: 2rem;
 }
 
 .section {
   grid-area: content;
+  padding: 1rem;
 }
 
 .section:has(.hero) {
-  grid-area: hero;
+  position: relative;
+  padding: 0;
+  width: 100%;
 }
 
 .section:has(.toc) {
@@ -39,10 +51,25 @@ h1, h2, h3, h4 {
 }
 
 @media (min-width: 600px) {
+  body > header + main {
+    margin-top: 164px;
+  }
+
   main {
     display: grid;
-    grid-template:
-      'hero hero'
-      'toc content' / 1fr 3fr;
+    gap: 56px;
+    grid-template: 'toc content' / 280px 1fr;
+    max-width: var(--grid-container-width);
+  }
+
+  .section:has(.hero) {
+    position: absolute;
+    height: 335px;
+    top: 0;
+    left: 0;
+  }
+
+  main > .section > .content {
+    max-width: none;
   }
 }

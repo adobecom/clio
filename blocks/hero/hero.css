@@ -1,26 +1,40 @@
 /* block specific CSS goes here */
 
-main .hero {
-  padding: 3rem 0;
-}
-  
-main .hero picture {
+.hero {
+  height: 335px;
   width: 100%;
   overflow: hidden;
 }
 
-main .hero img {
+.hero h1 {
+  position: relative;
+  margin: 3rem auto 0;
+  max-width: 1200px;
+  color: var(--color-white);
+  color: white;
+  font-size: var(--type-heading-xl-lh);
+  line-height: 67.5px;
+  text-align: center;
+  z-index: 1;
+}
+
+.hero img {
+  position: absolute;
   object-fit: cover;
-  width: 100%;
   height: 100%;
-  border-radius: 10px;
-  vertical-align: bottom;
+  width: 100%;
+  top: 0;
+  z-index: 0;
 }
 
 @media (min-width: 600px) {
 
-  main .hero img {
-    height: 300px;
+  .hero {
+    position: absolute;
+  }
+
+  .hero img {
+    z-index: -1;
   }
   
 }

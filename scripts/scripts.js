@@ -63,7 +63,7 @@ const CONFIG = {
   pictures.forEach((p) => p.parentElement.remove());
 
   const section = document.createElement('div');
-  section.append(buildBlock('hero', { elems: pictures }));
+  section.append(buildBlock('hero', { elems: [...pictures, h1] }));
   main.prepend(section);
 }());
 
