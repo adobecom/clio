@@ -43,7 +43,7 @@ export default async function decorate(block) {
   window.addEventListener('scroll', () => {
     const rect = document.querySelector('.content').getBoundingClientRect();
     const isSticky = block.classList.contains('is-sticky');
-    const shouldSticky = rect.top < 0;
+    const shouldSticky = rect.top < 48;
     if (isSticky === shouldSticky) {
       return;
     }
@@ -53,6 +53,6 @@ export default async function decorate(block) {
       width = `${block.clientWidth - parseInt(styles.paddingLeft, 10) - parseInt(styles.paddingRight)}px`;
     }
     block.style.width = width;
-    block.classList.toggle('is-sticky', rect.top < 0);
+    block.classList.toggle('is-sticky', shouldSticky);
   }, { passive: true });
 }

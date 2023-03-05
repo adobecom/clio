@@ -60,6 +60,7 @@ h2 {
     gap: 56px;
     grid-template: 'toc content' / 280px 1fr;
     max-width: var(--grid-container-width);
+    min-height: calc(100vh - 2rem - 164px);
   }
 
   .section:has(.hero) {
