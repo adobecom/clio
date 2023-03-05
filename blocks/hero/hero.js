@@ -1,6 +1,9 @@
 export default async function decorate(block) {
   let pictures = [...block.querySelectorAll('picture')];
   if (pictures.length < 2) {
+    if (pictures[0]) {
+      pictures[0].querySelector('img').loading = 'eager';
+    }
     return;
   }
 
@@ -31,6 +34,8 @@ export default async function decorate(block) {
     e.setAttribute('media', '(min-width: 600px)');
     responsivePicture.prepend(e);
   });
+
+  responsivePicture.querySelector('img').loading = 'eager';
 
   pictures.forEach((p) => console.log(p) || p.remove());
 
