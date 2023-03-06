@@ -61,7 +61,7 @@
 
 @media (min-width: 600px) {
   .toc {
-    margin: 0 0 2rem;
+    margin: 2.2rem 0 2rem;
   }
 
   .toc.is-sticky {
