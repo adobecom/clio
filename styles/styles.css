@@ -15,24 +15,21 @@ body > footer {
   display: none;
 }
 
-body > header + main {
-  margin: 0 auto 2rem;
-}
-
 main {
   display: block;
+  margin: 0 auto 2rem;
   background-color: var(--background-color);
   border-radius: 8px;
   border: 1px solid var(--color-gray-200);
 }
 
-h3, h4 {
-  scroll-margin: 1rem;
-}
-
 h2 {
   margin-top: 3rem;
   scroll-margin: 2rem;
+}
+
+h3, h4 {
+  scroll-margin: 1rem;
 }
 
 .section {
@@ -51,12 +48,9 @@ h2 {
 }
 
 @media (min-width: 600px) {
-  body > header + main {
-    margin-top: 164px;
-  }
-
   main {
     display: grid;
+    margin-top: 164px;
     gap: 56px;
     grid-template: 'toc content' / 280px 1fr;
     max-width: var(--grid-container-width);
