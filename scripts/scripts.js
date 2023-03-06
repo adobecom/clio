@@ -32,13 +32,13 @@ const CONFIG = {
   },
 };
 
-(function buildTocBlock() {
+function buildTocBlock() {
   const section = document.createElement('div');
   section.append(buildBlock('toc', { elems: [] }));
-  document.querySelector('main').prepend(section);
-}());
+  document.querySelector('main').append(section);
+}
 
-(function buildHeroBlock() {
+function buildHeroBlock() {
   const main = document.querySelector('main');
   const h1 = main.querySelector('h1');
   if (!h1 || !h1.previousElementSibling) {
@@ -65,7 +65,7 @@ const CONFIG = {
   const section = document.createElement('div');
   section.append(buildBlock('hero', { elems: [...pictures, h1] }));
   main.prepend(section);
-}());
+}
 
 // Load LCP image immediately
 (async function loadLCPImage() {
@@ -95,6 +95,8 @@ const miloLibs = setLibs(LIBS);
 (async function loadPage() {
   const { loadArea, loadDelayed, setConfig } = await import(`${miloLibs}/utils/utils.js`);
 
+  buildHeroBlock();
+  buildTocBlock();
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
   loadDelayed();
