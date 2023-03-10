@@ -47,11 +47,25 @@ h3, h4 {
   grid-area: toc;
 }
 
+body {
+  counter-reset: h4counter;
+}
+
+h2, h3 {
+  counter-reset: h4counter;
+}
+
+h4:before {
+  content: counter(h4counter) ".\0000a0\0000a0";
+  counter-increment: h4counter;
+  counter-reset: h3counter;
+}
+
 @media (min-width: 600px) {
   main {
     display: grid;
     margin-top: 164px;
-    gap: 56px;
+    gap: 3rem;
     grid-template: 'toc content' / 280px 1fr;
     max-width: var(--grid-container-width);
     min-height: calc(100vh - 2rem - 164px);
@@ -64,7 +78,9 @@ h3, h4 {
     left: 0;
   }
 
-  main > .section > .content {
+  main > .section > div:not(.toc),
+  main > .section > div.content {
     max-width: none;
+    margin-right: 3rem;
   }
 }
