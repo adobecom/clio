@@ -61,6 +61,11 @@ h4:before {
   counter-reset: h3counter;
 }
 
+code {
+  background-color: var(--color-gray-200);
+  padding: 0 .25rem;
+}
+
 @media (min-width: 600px) {
   main {
     display: grid;
