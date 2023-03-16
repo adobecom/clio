@@ -21,6 +21,7 @@
 .hero h1 {
   position: relative;
   margin: 3rem auto 0;
+  padding: 0 3rem;
   max-width: 1200px;
   color: var(--color-white);
   color: white;
@@ -33,7 +34,6 @@
 .hero img {
   position: absolute;
   object-fit: cover;
-  object-position: 0 30%;
   height: calc(100% - 24px);
   width: calc(100% - 48px);
   margin: 24px;
