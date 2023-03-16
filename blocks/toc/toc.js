@@ -41,7 +41,7 @@ export default async function decorate(block) {
   block.querySelectorAll('li[aria-expanded]').forEach((li) => li.setAttribute('aria-expanded', false));
 
   window.addEventListener('scroll', () => {
-    const rect = document.querySelector('.content').getBoundingClientRect();
+    const rect = document.querySelector('.section:nth-child(3)').getBoundingClientRect();
     const isSticky = block.classList.contains('is-sticky');
     const shouldSticky = rect.top < 48;
     if (isSticky === shouldSticky) {

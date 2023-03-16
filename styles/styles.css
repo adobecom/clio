@@ -37,13 +37,13 @@ h3, h4 {
   padding: 1rem;
 }
 
-.section:has(.hero) {
+.section:nth-child(1) {
   position: relative;
   padding: 0;
   width: 100%;
 }
 
-.section:has(.toc) {
+.section:nth-child(2) {
   grid-area: toc;
 }
 
@@ -76,7 +76,7 @@ code {
     min-height: calc(100vh - 2rem - 164px);
   }
 
-  .section:has(.hero) {
+  .section:nth-child(1) {
     position: absolute;
     height: 335px;
     top: 0;

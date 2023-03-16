@@ -35,7 +35,7 @@ const CONFIG = {
 function buildTocBlock() {
   const section = document.createElement('div');
   section.append(buildBlock('toc', { elems: [] }));
-  document.querySelector('main').append(section);
+  document.querySelector('main').prepend(section);
 }
 
 function buildHeroBlock() {
@@ -64,6 +64,7 @@ function buildHeroBlock() {
 
   const section = document.createElement('div');
   section.append(buildBlock('hero', { elems: [...pictures, h1] }));
+  section.classList.add('hero-wrapper');
   main.prepend(section);
 }
 
@@ -95,8 +96,8 @@ const miloLibs = setLibs(LIBS);
 (async function loadPage() {
   const { loadArea, loadDelayed, setConfig } = await import(`${miloLibs}/utils/utils.js`);
 
-  buildHeroBlock();
   buildTocBlock();
+  buildHeroBlock();
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
   loadDelayed();
