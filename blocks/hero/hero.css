@@ -34,6 +34,7 @@
 .hero img {
   position: absolute;
   object-fit: cover;
+  object-position: center top;
   height: calc(100% - 24px);
   width: calc(100% - 48px);
   margin: 24px;
