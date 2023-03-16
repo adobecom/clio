@@ -41,26 +41,23 @@ function buildTocBlock() {
 function buildHeroBlock() {
   const main = document.querySelector('main');
   const h1 = main.querySelector('h1');
-  if (!h1 || !h1.previousElementSibling) {
+  if (!h1) {
     return;
   }
 
   const pictures = [];
-  let sibling = h1.previousElementSibling;
-  while (sibling) {
-    if (sibling.firstElementChild && sibling.firstElementChild.nodeName === 'PICTURE') {
-      pictures.push(sibling.firstElementChild);
-      sibling = sibling.previousElementSibling;
-    } else {
-      sibling = null;
+  if (h1.previousElementSibling) {
+    let sibling = h1.previousElementSibling;
+    while (sibling) {
+      if (sibling.firstElementChild && sibling.firstElementChild.nodeName === 'PICTURE') {
+        pictures.push(sibling.firstElementChild);
+        sibling = sibling.previousElementSibling;
+      } else {
+        sibling = null;
+      }
     }
+    pictures.forEach((p) => p.parentElement.remove());
   }
-
-  if (!pictures.length) {
-    return;
-  }
-
-  pictures.forEach((p) => p.parentElement.remove());
 
   const section = document.createElement('div');
   section.append(buildBlock('hero', { elems: [...pictures, h1] }));
