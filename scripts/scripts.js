@@ -38,6 +38,18 @@ function buildTocBlock() {
   document.querySelector('main').prepend(section);
 }
 
+function scrollToAnchor() {
+  const { hash } = window.location;
+  if (!hash) {
+    return;
+  }
+  const el = document.querySelector(hash);
+  if (!el) {
+    return;
+  }
+  el.scrollIntoView({ behavior: 'smooth' });
+}
+
 function buildHeroBlock() {
   const main = document.querySelector('main');
   const h1 = main.querySelector('h1');
@@ -97,5 +109,6 @@ const miloLibs = setLibs(LIBS);
   buildHeroBlock();
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
+  scrollToAnchor();
   loadDelayed();
 }());

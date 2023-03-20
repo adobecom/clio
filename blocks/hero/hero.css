@@ -34,7 +34,7 @@
 .hero img {
   position: absolute;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 40%;
   height: calc(100% - 24px);
   width: calc(100% - 48px);
   margin: 24px;
@@ -44,13 +44,11 @@
 }
 
 @media (min-width: 600px) {
-
   .hero {
     position: absolute;
   }
 
   .hero img {
     z-index: -1;
-  }
-  
+  }  
 }
