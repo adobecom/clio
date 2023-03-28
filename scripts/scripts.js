@@ -95,7 +95,7 @@ function buildBackToTop() {
 
   window.addEventListener('scroll', () => {
     const isVisible = Number(section.style.opacity) > 0;
-    const shouldVisible = window.scrollY > 350;
+    const shouldVisible = window.innerWidth < 600 ? window.scrollY > 600 : window.scrollY > 350;
     if (isVisible !== shouldVisible) {
       section.style.opacity = shouldVisible ? 1 : 0;
     }
