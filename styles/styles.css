@@ -73,6 +73,7 @@ code {
   border-radius: 2rem;
   color: white;
   cursor: pointer;
+  font-family: var(--body-font-family);
   font-size: 1rem;
   font-weight: bold;
 }
@@ -109,7 +110,8 @@ code {
 .section.is-floating .button::before {
   content: '\2B06';
   display: inline-block;
-  margin-right: 1rem;
+  margin-left: -.25rem;
+  margin-right: .5rem;
 }
 
 /* “⬆” U+2B06 */

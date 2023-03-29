@@ -82,7 +82,7 @@ function buildBackToTop() {
   section.classList.add('section', 'is-floating');
 
   const button = document.createElement('button');
-  button.classList.add('button', 'is-floating');
+  button.classList.add('button');
   button.textContent = 'Back to top';
   button.addEventListener('click', (ev) => {
     ev.preventDefault();
