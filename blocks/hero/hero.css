@@ -20,7 +20,7 @@
 
 .hero h1 {
   position: relative;
-  margin: 3rem auto 0;
+  margin: 6rem auto 0;
   padding: 0 3rem;
   max-width: 1200px;
   color: var(--color-white);
@@ -46,6 +46,11 @@
 @media (min-width: 600px) {
   .hero {
     position: absolute;
+  }
+
+  .hero h1 {
+    position: relative;
+    margin-top: 3.5rem;
   }
 
   .hero img {

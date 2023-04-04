@@ -77,6 +77,31 @@ function buildHeroBlock() {
   main.prepend(section);
 }
 
+function buildBackToTop() {
+  const section = document.createElement('div');
+  section.classList.add('section', 'is-floating');
+
+  const button = document.createElement('button');
+  button.classList.add('button');
+  button.textContent = 'Back to top';
+  button.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
+  const main = document.querySelector('main');
+  section.append(button);
+
+  main.append(section);
+
+  window.addEventListener('scroll', () => {
+    const isVisible = Number(section.style.opacity) > 0;
+    const shouldVisible = window.innerWidth < 600 ? window.scrollY > 600 : window.scrollY > 350;
+    if (isVisible !== shouldVisible) {
+      section.style.opacity = shouldVisible ? 1 : 0;
+    }
+  }, { passive: true });
+}
+
 // Load LCP image immediately
 (async function loadLCPImage() {
   const lcpImg = document.querySelector('img');
@@ -109,6 +134,7 @@ const miloLibs = setLibs(LIBS);
   buildHeroBlock();
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
+  buildBackToTop();
   scrollToAnchor();
   loadDelayed();
 }());
