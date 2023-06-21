@@ -79,7 +79,7 @@ function buildHeroBlock() {
 
 function fixLinkNavigation() {
   document.querySelectorAll('a[href]').forEach((a) => {
-    if (a.href.incldues('clio--adobe.com.hlx.') || window.top === window) {
+    if (a.href.includes('clio--adobe.com.hlx.') || window.top === window) {
       return;
     }
     if (a.href.startsWith('https://firefly.adobe.com/')) {
