@@ -77,6 +77,19 @@ function buildHeroBlock() {
   main.prepend(section);
 }
 
+function fixLinkNavigation() {
+  document.querySelectorAll('a[href]').forEach((a) => {
+    if (a.href.incldues('clio--adobe.com.hlx.') || window.top === window) {
+      return;
+    }
+    if (a.href.startsWith('https://firefly.adobe.com/')) {
+      a.setAttribute('target', '_top');
+    } else {
+      a.setAttribute('target', '_blank');
+    }
+  });
+}
+
 function buildBackToTop() {
   const section = document.createElement('div');
   section.classList.add('section', 'is-floating');
@@ -134,6 +147,7 @@ const miloLibs = setLibs(LIBS);
   buildHeroBlock();
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
+  fixLinkNavigation();
   buildBackToTop();
   scrollToAnchor();
   loadDelayed();
