@@ -39,20 +39,4 @@ export default async function decorate(block) {
     parent.append(li);
   });
   block.querySelectorAll('li[aria-expanded]').forEach((li) => li.setAttribute('aria-expanded', false));
-
-  window.addEventListener('scroll', () => {
-    const rect = document.querySelector('.section:nth-child(3)').getBoundingClientRect();
-    const isSticky = block.classList.contains('is-sticky');
-    const shouldSticky = rect.top < 48;
-    if (isSticky === shouldSticky) {
-      return;
-    }
-    let width = 'auto';
-    if (shouldSticky) {
-      const styles = window.getComputedStyle(block);
-      width = `${block.clientWidth - parseInt(styles.paddingLeft, 10) - parseInt(styles.paddingRight)}px`;
-    }
-    block.style.width = width;
-    block.classList.toggle('is-sticky', shouldSticky);
-  }, { passive: true });
 }

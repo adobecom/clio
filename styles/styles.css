@@ -6,6 +6,16 @@
  * 
  *
  */
+
+:root {
+  --content-offset: 164px;
+  --sidebar-width: 280px;
+}
+
+html {
+  position: relative;
+}
+
 html body {
   background-color: var(--color-gray-100);
 }
@@ -33,7 +43,6 @@ h3, h4 {
 }
 
 .section {
-  grid-area: content;
   padding: 1rem;
 }
 
@@ -41,10 +50,6 @@ h3, h4 {
   position: relative;
   padding: 0;
   width: 100%;
-}
-
-.section:nth-child(2) {
-  grid-area: toc;
 }
 
 body {
@@ -94,7 +99,6 @@ code {
 .section.is-floating {
   position: fixed;
   display: flex;
-  grid-area: none;
   inset: auto 0 0;
   background: linear-gradient(0deg, white 50%, transparent);
   justify-content: center;
@@ -107,6 +111,7 @@ code {
   left: 50%;
 }
 
+/* “⬆” U+2B06 */
 .section.is-floating .button::before {
   content: '\2B06';
   display: inline-block;
@@ -114,16 +119,16 @@ code {
   margin-right: .5rem;
 }
 
-/* “⬆” U+2B06 */
-
 @media (min-width: 600px) {
   main {
-    display: grid;
-    margin-top: 164px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: calc(var(--sidebar-width) + 3rem);
+    margin-top: var(--content-offset);
     gap: 3rem;
-    grid-template: 'toc content' / 280px 1fr;
     max-width: var(--grid-container-width);
-    min-height: calc(100vh - 2rem - 164px);
+    min-height: calc(100vh - 2rem - var(--content-offset));
   }
 
   .section:nth-child(1) {
@@ -131,6 +136,13 @@ code {
     height: 254px;
     top: 0;
     left: 0;
+  }
+
+  .section:nth-child(2) {
+    position: absolute;
+    max-width: var(--sidebar-width);
+    height: calc(100% - var(--content-offset));
+    translate: calc(-1 * var(--sidebar-width) - 3rem);
   }
 
   main > .section > div:not(.toc),

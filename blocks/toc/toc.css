@@ -61,11 +61,12 @@
 
 @media (min-width: 600px) {
   .toc {
+    box-sizing: border-box;
     margin: 2.2rem 0 2rem;
-  }
-
-  .toc.is-sticky {
-    position: fixed;
+    padding-bottom: 1rem;
+    position: sticky;
     top: 1rem;
+    max-height: calc(100vh - 5.2rem);
+    overflow: auto;
   }
 }
