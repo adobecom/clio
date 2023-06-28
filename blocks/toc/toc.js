@@ -12,8 +12,8 @@ export default async function decorate(block) {
       ev.preventDefault();
       block.querySelectorAll('li').forEach((li) => li.classList.remove('is-active'));
       ev.target.closest('li').classList.add('is-active');
-      console.log(document.querySelector(new URL(a.href).hash));
-      document.querySelector(new URL(a.href).hash).scrollIntoView({ behavior: 'smooth' });
+      const target = document.getElementById(decodeURIComponent(new URL(a.href).hash.substring(1)));
+      target?.scrollIntoView({ behavior: 'smooth' });
     });
     li.append(a);
     if (h.nodeName === 'H2') {
