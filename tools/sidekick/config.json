@@ -12,26 +12,33 @@
       "includePaths": [ "**.docx**" ]
     },    
     {
-      "id": "translate",
-      "title": "Translate",
+      "id": "tools",
+      "title": "Tools",
+      "isContainer": true
+    },
+    {
+      "containerId": "tools",
+      "id": "localize",
+      "title": "Localize",
       "environments": [ "edit" ],
-      "url": "https://milo.adobe.com/tools/translation/index.html",
+      "url": "https://main--milo--adobecom.hlx.page/tools/loc/index.html?project=clio--adobecom",
       "passReferrer": true,
-      "include_paths": [ "**.xlsx**" ]
+      "includePaths": [ "**.xlsx**" ]
     },
     {
-      "title": "Send to CaaS",
-      "id": "sendtocaas",
-      "environments": ["dev","preview", "live", "prod"],
-      "event": "send-to-caas",
-      "excludePaths": ["/tools/caas**", "*.json"]
-    },
-    {
+      "containerId": "tools",
       "title": "Check Schema",
       "id": "checkschema",
       "environments": ["prod"],
       "event": "check-schema",
       "excludePaths": ["/tools**", "*.json"]
+    },
+    {
+      "containerId": "tools",
+      "title": "Preflight",
+      "id": "preflight",
+      "environments": ["dev", "preview", "live"],
+      "event": "preflight"
     }
   ]
 }
