@@ -27,9 +27,11 @@ const CONFIG = {
   // fallbackRouting: 'off',
   locales: {
     '': { ietf: 'en-US', tk: 'hah7vzn.css' },
-    de: { ietf: 'de-DE', tk: 'hah7vzn.css' },
-    kr: { ietf: 'ko-KR', tk: 'zfo3ouc' },
+    de: { ietf: 'de-DE', tk: 'vin7zsi.css' },
+    es: { ietf: 'es-ES', tk: 'oln4yqj.css' },
+    fr: { ietf: 'fr-FR', tk: 'vrk5vyv.css' },
     ja: { ietf: 'ja-JP', tk: 'dvg6awq' },
+    pt: { ietf: 'pt-PT', tk: 'inq1xob.css' },
   },
 };
 
