@@ -30,8 +30,12 @@ const CONFIG = {
     de: { ietf: 'de-DE', tk: 'vin7zsi.css' },
     es: { ietf: 'es-ES', tk: 'oln4yqj.css' },
     fr: { ietf: 'fr-FR', tk: 'vrk5vyv.css' },
+    it: { ietf: 'it-IT', tk: 'bbf5pok.css' },
     ja: { ietf: 'ja-JP', tk: 'dvg6awq' },
-    pt: { ietf: 'pt-PT', tk: 'inq1xob.css' },
+    kr: { ietf: 'ko-KR', tk: 'qjs5sfm' },
+    nl: { ietf: 'nl-NL', tk: 'cya6bri.css' },
+    pt: { ietf: 'pt-BR', tk: 'inq1xob.css' },
+    se: { ietf: 'sv-SE', tk: 'fpk1pcd.css' },
   },
 };
 
