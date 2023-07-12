@@ -32,10 +32,10 @@ const CONFIG = {
     fr: { ietf: 'fr', tk: 'vrk5vyv.css' },
     it: { ietf: 'it', tk: 'bbf5pok.css' },
     ja: { ietf: 'ja', tk: 'dvg6awq' },
-    kr: { ietf: 'kr', tk: 'qjs5sfm' },
+    ko: { ietf: 'ko', tk: 'qjs5sfm' },
     nl: { ietf: 'nl', tk: 'cya6bri.css' },
     pt: { ietf: 'pt', tk: 'inq1xob.css' },
-    se: { ietf: 'se', tk: 'fpk1pcd.css' },
+    sv: { ietf: 'sv', tk: 'fpk1pcd.css' },
   },
 };
 
