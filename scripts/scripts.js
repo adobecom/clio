@@ -26,10 +26,16 @@ const CONFIG = {
   // geoRouting: 'off',
   // fallbackRouting: 'off',
   locales: {
-    '': { ietf: 'en-US', tk: 'hah7vzn.css' },
-    de: { ietf: 'de-DE', tk: 'hah7vzn.css' },
-    kr: { ietf: 'ko-KR', tk: 'zfo3ouc' },
+    '': { ietf: 'en', tk: 'hah7vzn.css' },
+    de: { ietf: 'de', tk: 'vin7zsi.css' },
+    es: { ietf: 'es', tk: 'oln4yqj.css' },
+    fr: { ietf: 'fr', tk: 'vrk5vyv.css' },
+    it: { ietf: 'it', tk: 'bbf5pok.css' },
     ja: { ietf: 'ja', tk: 'dvg6awq' },
+    ko: { ietf: 'ko', tk: 'qjs5sfm' },
+    nl: { ietf: 'nl', tk: 'cya6bri.css' },
+    pt: { ietf: 'pt', tk: 'inq1xob.css' },
+    sv: { ietf: 'sv', tk: 'fpk1pcd.css' },
   },
 };
 
