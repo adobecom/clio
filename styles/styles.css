@@ -20,6 +20,15 @@ html body {
   background-color: var(--color-gray-100);
 }
 
+body.dark-theme {
+  background-color: #121212;
+}
+
+body.dark-theme main {
+  background-color: var(--color-gray-700);
+  color: white;
+}
+
 body > header,
 body > footer {
   display: none;
@@ -38,7 +47,8 @@ h2 {
   scroll-margin: 2rem;
 }
 
-h3, h4 {
+h3,
+h4 {
   scroll-margin: 1rem;
 }
 
@@ -56,19 +66,20 @@ body {
   counter-reset: h4counter;
 }
 
-h2, h3 {
+h2,
+h3 {
   counter-reset: h4counter;
 }
 
 h4:before {
-  content: counter(h4counter) ".\0000a0\0000a0";
+  content: counter(h4counter) '.\0000a0\0000a0';
   counter-increment: h4counter;
   counter-reset: h3counter;
 }
 
 code {
   background-color: var(--color-gray-200);
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
 }
 
 .button {
@@ -103,7 +114,7 @@ code {
   background: linear-gradient(0deg, white 50%, transparent);
   justify-content: center;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .section.is-floating .button {
@@ -115,8 +126,8 @@ code {
 .section.is-floating .button::before {
   content: '\2B06';
   display: inline-block;
-  margin-left: -.25rem;
-  margin-right: .5rem;
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
 }
 
 @media (min-width: 600px) {

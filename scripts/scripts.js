@@ -38,6 +38,16 @@ const CONFIG = {
     sv: { ietf: 'sv', tk: 'fpk1pcd.css' },
   },
 };
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const userTheme = window.location.search.includes('theme=dark');
+
+function getTheme() {
+  if (prefersDarkScheme.matches || userTheme) {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+}
 
 function buildTocBlock() {
   const section = document.createElement('div');
@@ -68,7 +78,10 @@ function buildHeroBlock() {
   if (h1.previousElementSibling) {
     let sibling = h1.previousElementSibling;
     while (sibling) {
-      if (sibling.firstElementChild && sibling.firstElementChild.nodeName === 'PICTURE') {
+      if (
+        sibling.firstElementChild &&
+        sibling.firstElementChild.nodeName === 'PICTURE'
+      ) {
         pictures.push(sibling.firstElementChild);
         sibling = sibling.previousElementSibling;
       } else {
@@ -107,26 +120,31 @@ function buildBackToTop() {
   button.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
+  });
   const main = document.querySelector('main');
   section.append(button);
 
   main.append(section);
 
-  window.addEventListener('scroll', () => {
-    const isVisible = Number(section.style.opacity) > 0;
-    const shouldVisible = window.innerWidth < 600 ? window.scrollY > 600 : window.scrollY > 350;
-    if (isVisible !== shouldVisible) {
-      section.style.opacity = shouldVisible ? 1 : 0;
-    }
-  }, { passive: true });
+  window.addEventListener(
+    'scroll',
+    () => {
+      const isVisible = Number(section.style.opacity) > 0;
+      const shouldVisible =
+        window.innerWidth < 600 ? window.scrollY > 600 : window.scrollY > 350;
+      if (isVisible !== shouldVisible) {
+        section.style.opacity = shouldVisible ? 1 : 0;
+      }
+    },
+    { passive: true }
+  );
 }
 
 // Load LCP image immediately
 (async function loadLCPImage() {
   const lcpImg = document.querySelector('img');
   lcpImg?.removeAttribute('loading');
-}());
+})();
 
 /*
  * ------------------------------------------------------------
@@ -138,18 +156,22 @@ const miloLibs = setLibs(LIBS);
 
 (function loadStyles() {
   const paths = [`${miloLibs}/styles/styles.css`];
-  if (STYLES) { paths.push(STYLES); }
+  if (STYLES) {
+    paths.push(STYLES);
+  }
   paths.forEach((path) => {
     const link = document.createElement('link');
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('href', path);
     document.head.appendChild(link);
   });
-}());
+})();
 
 (async function loadPage() {
-  const { loadArea, loadDelayed, setConfig } = await import(`${miloLibs}/utils/utils.js`);
-
+  const { loadArea, loadDelayed, setConfig } = await import(
+    `${miloLibs}/utils/utils.js`
+  );
+  getTheme();
   buildTocBlock();
   buildHeroBlock();
   setConfig({ ...CONFIG, miloLibs });
@@ -158,4 +180,4 @@ const miloLibs = setLibs(LIBS);
   buildBackToTop();
   scrollToAnchor();
   loadDelayed();
-}());
+})();
