@@ -97,13 +97,13 @@ function fixLinkNavigation() {
   });
 }
 
-function buildBackToTop() {
+async function buildBackToTop() {
   const section = document.createElement('div');
   section.classList.add('section', 'is-floating');
 
   const button = document.createElement('button');
   button.classList.add('button');
-  button.textContent = 'Back to top';
+  button.textContent = await replaceKey('back-to-top', getConfig());;
   button.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -135,6 +135,8 @@ function buildBackToTop() {
  */
 
 const miloLibs = setLibs(LIBS);
+const { loadArea, loadDelayed, setConfig, getConfig } = await import(`${miloLibs}/utils/utils.js`);
+const { replaceKey } = await import(`${miloLibs}/features/placeholders.js`);
 
 (function loadStyles() {
   const paths = [`${miloLibs}/styles/styles.css`];
@@ -148,7 +150,6 @@ const miloLibs = setLibs(LIBS);
 }());
 
 (async function loadPage() {
-  const { loadArea, loadDelayed, setConfig } = await import(`${miloLibs}/utils/utils.js`);
 
   buildTocBlock();
   buildHeroBlock();
