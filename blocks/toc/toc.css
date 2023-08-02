@@ -21,6 +21,7 @@
 }
 
 .toc li a:hover,
+.toc li a:focus-visible,
 .toc li.is-active > a {
   background: var(--color-gray-200);
   text-decoration: none;
