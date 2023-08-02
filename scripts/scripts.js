@@ -137,6 +137,14 @@ async function buildBackToTop() {
 const miloLibs = setLibs(LIBS);
 const { loadArea, loadDelayed, setConfig, getConfig } = await import(`${miloLibs}/utils/utils.js`);
 const { replaceKey } = await import(`${miloLibs}/features/placeholders.js`);
+const { PERSONALIZATION_TAGS } = await import(`${miloLibs}/features/personalization/personalization.js`);
+const usp = new URLSearchParams(window.location.search);
+
+let theme = PERSONALIZATION_TAGS.darkmode() ? 'dark' : 'light';
+if (usp.has('theme')) {
+  theme = usp.get('theme').toLocaleLowerCase() === 'dark' ? 'dark' : 'light';
+}
+document.body.classList.add(theme);
 
 (function loadStyles() {
   const paths = [`${miloLibs}/styles/styles.css`];

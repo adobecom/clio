@@ -22,7 +22,7 @@
 
 .toc li a:hover,
 .toc li.is-active > a {
-  background: #eee;
+  background: var(--color-gray-200);
   text-decoration: none;
 }
 
@@ -50,7 +50,7 @@
   left: 50%;
   width: .5rem;
   height: .5rem;
-  border: 0 solid;
+  border: 0 solid var(--color-gray-900);
   border-width: 0 2px 2px 0;
   transform: translateX(-50%) rotate(-45deg);
 }
