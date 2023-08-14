@@ -141,8 +141,8 @@ const { replaceKey } = await import(`${miloLibs}/features/placeholders.js`);
 const usp = new URLSearchParams(window.location.search);
 
 let theme = 'light' // PERSONALIZATION_TAGS.darkmode() ? 'dark' : 'light';
-if (usp.has('theme')) {
-  theme = usp.get('theme').toLocaleLowerCase() === 'dark' ? 'dark' : 'light';
+if (usp.has('colorTheme')) {
+  theme = usp.get('colorTheme').toLocaleLowerCase() === 'dark' ? 'dark' : 'light';
 }
 document.body.classList.add(theme);
 
